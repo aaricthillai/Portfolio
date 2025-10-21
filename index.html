@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thillai Raj Selvakkani - Cybersecurity Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at top left, rgba(124, 58, 237, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.15), transparent 50%),
+                radial-gradient(ellipse at top right, rgba(139, 92, 246, 0.1), transparent 50%),
+                #0a0a0a;
+            z-index: 1;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 2;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            top: 60%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+
+        .shape3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #a78bfa, #818cf8);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(20px, 10px) scale(1.05); }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #a78bfa;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7c3aed, #3b82f6);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 5% 4rem 5%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0 5rem 0;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            margin: 5rem 0;
+            padding: 3.5rem;
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            animation: fadeIn 0.8s ease;
+            transition: all 0.4s;
+        }
+
+        .section:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .about-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #d1d5db;
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s;
+        }
+
+        .experience-item:hover {
+            background: rgba(25, 25, 25, 0.7);
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateX(10px);
+        }
+
+        .experience-item h3 {
+            color: #a78bfa;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: #7c3aed;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .duration {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.8rem;
+        }
+
+        .hall-of-fame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .fame-card {
+            padding: 2.5rem;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.4s;
+            text-align: center;
+        }
+
+        .fame-card:hover {
+            background: rgba(25, 25, 25, 0.7);
+            border-color: rgba(124, 58, 237, 0.4);
+            transform: translateY(-8px);
+        }
+
+        .fame-card h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .fame-card p {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .fame-card a {
+            color: #7c3aed;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .fame-card a:hover {
+            color: #a78bfa;
+        }
+
+        .microsoft-highlight {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(124, 58, 237, 0.4);
+        }
+
+        .microsoft-highlight h3 {
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .social-card {
+            padding: 2.5rem;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .social-card:hover {
+            background: rgba(25, 25, 25, 0.7);
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .social-card h3 {
+            color: #7c3aed;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .social-card a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-card a:hover {
+            color: #a78bfa;
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 3rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .section { padding: 2rem; }
+            .section h2 { font-size: 2rem; }
+            .nav-links { gap: 1.5rem; font-size: 0.9rem; }
+            .container { padding-top: 6rem; }
+            .hall-of-fame-grid,
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="grid-overlay"></div>
+    <div class="floating-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">STR</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Thillai Raj Selvakkani</h1>
+            <p class="subtitle">Cybersecurity Specialist • Penetration Tester • Security Researcher</p>
+        </div>
+
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Cybersecurity specialist with over 4 years of practical experience in penetration testing, vulnerability assessment, and exploit research. Focused on identifying critical weaknesses, simulating advanced attack vectors, and developing robust remediation strategies. Dedicated to continuous learning, red teaming methodologies, and advancing the overall security posture of organizations.</p>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Security Analyst</h3>
+                <div class="company">Novalnet e-Solutions</div>
+                <div class="duration">Nov 2024 - Present • 1 year 10 months total</div>
+                <p>Responsible for securing systems, identifying vulnerabilities, ensuring PCI DSS compliance, and protecting payment servers. Focused on monitoring threats and enhancing overall security.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Security Analyst Trainee</h3>
+                <div class="company">Novalnet e-Solutions</div>
+                <div class="duration">Jan 2024 - Oct 2024 • 10 months • Chennai, Tamil Nadu, India</div>
+                <p>Working with Novalnet E Solutions to provide services for Novalnet AG. Key responsibilities include:</p>
+                <ul>
+                    <li>Conducting comprehensive penetration testing to identify and mitigate security vulnerabilities</li>
+                    <li>Ensuring compliance with PCI DSS standards to maintain the highest levels of data protection and privacy</li>
+                    <li>Testing and securing payment servers to prevent unauthorized access and data breaches</li>
+                    <li>Analyzing security logs and incident reports to identify potential threats and develop effective countermeasures</li>
+                    <li>Collaborating with cross-functional teams to implement robust security protocols and improve overall security posture</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <h2>Hall of Fame</h2>
+            <div class="hall-of-fame-grid">
+                <div class="fame-card microsoft-highlight">
+                    <h3>🏆 Microsoft</h3>
+                    <p style="color: #a78bfa; font-weight: 600; font-size: 1.1rem;">Top 40 Security Researcher</p>
+                    <p>MVR by Microsoft<br>MSRC Leaderboard Q3&Q4 2023, Q1&Q3 2024</p>
+                    <a href="https://msrc.microsoft.com/leaderboard" target="_blank">View Leaderboard →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Uber</h3>
+                    <a href="https://hackerone.com/uber/thanks/2024" target="_blank">View Recognition →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Zendesk</h3>
+                    <a href="https://hackerone.com/zendesk/thanks/2022?type=team" target="_blank">View Recognition →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Mobilevikings</h3>
+                    <a href="https://app.intigriti.com/programs/mv/mobilevikings/leaderboard?alltime=true&severity=1" target="_blank">View Leaderboard →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Capital One</h3>
+                    <a href="https://hackerone.com/capital-one/thanks/2022?type=team" target="_blank">View Recognition →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Impactguru</h3>
+                    <a href="https://www.impactguru.com/hall-of-fame" target="_blank">View Hall of Fame →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Resmed</h3>
+                    <a href="https://hackerone.com/resmed/thanks/2022?type=team" target="_blank">View Recognition →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>CodeHS</h3>
+                    <a href="https://codehs.com/security/" target="_blank">View Security Page →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Twomile</h3>
+                    <a href="https://twomile.com/security-research/" target="_blank">View Research →</a>
+                </div>
+
+                <div class="fame-card">
+                    <h3>Urban Company</h3>
+                    <a href="https://hackerone.com/urbancompany/thanks/2024" target="_blank">View Recognition →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Let's Connect</h2>
+            <div class="social-links">
+                <div class="social-card">
+                    <h3>LinkedIn</h3>
+                    <a href="https://in.linkedin.com/in/thillai-raj-selvakkani-114196212" target="_blank">Connect with me →</a>
+                </div>
+                <div class="social-card">
+                    <h3>X (Twitter)</h3>
+                    <a href="https://x.com/whitehat03?s=11" target="_blank">@whitehat03 →</a>
+                </div>
+                <div class="social-card">
+                    <h3>Medium</h3>
+                    <a href="https://medium.com/@cyber_catz" target="_blank">Read my articles →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thillai Raj Selvakkani. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Cybersecurity Specialist • Penetration Tester • Security Researcher</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
